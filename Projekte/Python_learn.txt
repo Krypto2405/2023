@@ -9,8 +9,8 @@ Weiter gibt es jeweils noch eine Zusatzaufgabe, für welche keine Musterlösung 
 10.1.1. Hello World! I’m…
 
 Vorkenntnisse: Kapitel 1.
-
 Erstelle ein Programm, das deinen Vorname, Nachname und dein Geburtsdatum auf der Konsole ausgibt.
+
 
 Musterlösung: hello_i_am.py.
 
