@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>HOME - Kryptø Cloud</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://kit.fontawesome.com/1e3454279b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dialoge.css">
+</head>
+<body>
+
+<div class="header">
+  <h1><font size="10">Kryptø Cloud</font></h1>
+  <p><font size="6">A <b>Electronic Music </b>Cloud Storage</font></p>
+</div>
+
+<div class="navbar">
+  <a href="index.php" >HOME</a>
+  <a class="a1" href="https://soundcloud.com/studio-824"> SOUNDCLOUD </a>
+  <a class="a2" href="https://www.mixcloud.com/studio-824"> MIXCLOUD </a>
+  <a class="a3" href="https://www.instagram.com/krisengels"> INSTAGRAM </a>
+  <a id="b1" href="#" class="right" class="button einleitung-button hover-button" onclick="dialogOeffnen('loslegen-dialog')">Anmelden</a>  <!--TODO Anmeldebutton-->
+  <a id="b2" href="sets.html" class="right">Sets</a>
+  <a id="b2" href="samples.html" class="right">Samples</a>
+</div>
+
+<div class="row">
+  <div class="side">
+    <h2>LABEL</h2>
+    <h4>Studio-824</h4>
+    <img class="meimg" src="art.png">
+    <b>Studio-824 is a label from Bielefeld/NRW (Ger)</b>
+
+    <h3>Genres</h3>
+    <p>Elecronic Genres</p>
+    <div class="cont" style="height:60px;">Techno</div><br>
+    <div class="cont" style="height:60px;">Minimal</div><br>
+    <div class="cont" style="height:60px;">Deep-Tech</div>
+  </div>
+  <div class="main">
+    <h2>First Impressions</h2>
+    <div class="cont" style="height:120px;">
+      Kryptos first impressions with electronic music was in his early youth.
+      <br> The first experiences in music production was in the age of 15 in Traktor Pro & Ableton LIVE.
+      <p>He founded his own label "Studio-824" in 2018.</p>
+    </div>
+    <br>
+    <h2></h2>
+    <h5></h5>
+    <div class="cont" style="height:400px;"></div>
+    <p></p>
+    <p></p>
+  </div>
+</div>
+
+<div class="footer">
+  <h2></h2>
+</div>
+
+<!--Anmeldefenster-->
+<div id="body-overlay"></div>
+<div class="dialog" id="loslegen-dialog">
+    <a href="#" role="button" class="dialog-schliessen-button" onclick="dialogSchliessen('loslegen-dialog')">
+      <i class="fas fa-xmark"></i>
+    </a>
+  <h3>Login</h3>
+  <br>
+  <form action="index.php" method="post">
+    <a href="#" onclick="dialogOeffnen('reg-dialog'), dialogSchliessen('loslegen-dialog')">Sign In</a>
+    <input type="text" name="username" placeholder="Username" class="eingabefeld">
+    <input type="password" name="pw" placeholder="Password" class="eingabefeld">
+    <input type="submit" name="submit1" value=">">
+  </form>
+</div>
+<script src="dialoge.js"></script>
+
+<!--Registrierungsfenster-->
+<div id="body-overlay"></div>
+<div class="dialog" id="reg-dialog">
+    <a href="#" role="button" class="reg-schliessen-button" onclick="dialogSchliessen('reg-dialog')">
+      <i class="fas fa-xmark"></i>
+    </a>
+  <h3>Sign In</h3>
+  <br>
+  <form action="index.html" method="post">
+    <input type="text" placeholder="Vorname" class="eingabefeld">
+    <input type="text" placeholder="Nachname" class="eingabefeld">
+    <input type="text" name="username" placeholder="Username" class="eingabefeld">
+    <input type="email" name="email" placeholder="Email-Address" class="eingabefeld">
+    <input type="password" name="pw1" placeholder="Password" class="eingabefeld">
+    <input type="password" name="pw2" placeholder="Password" class="eingabefeld">
+    <input type="submit" name="submit2" value=">">
+  </form>
+</div>
+<script src="dialoge.js"></script>
+
+<!--PHP-->
+<?php
+    if(isset($_POST["submit1"])){
+      require("mysql.php");
+      $stmt = $mysql->prepare("SELECT * FROM accounts WHERE USERNAME = :user"); //Username überprüfen
+      $stmt->bindParam(":user", $_POST["username"]);
+      $stmt->execute();
+      $count = $stmt->rowCount();
+      if($count == 1){
+        //Username ist vorhanden
+        $row = $stmt->fetch();
+        if(password_verify($_POST["pw"], $row["PASSWORD"])){
+          session_start();
+          $_SESSION["username"] = $row["USERNAME"];
+          header("Location: geheim.php");
+        } else {
+          echo "Der Login ist fehlgeschlagen";
+        }
+      } else {
+        echo "Der Login ist fehlgeschlagen";
+      }
+    }
+     ?> <!--Einloggen-->
+
+<?php
+    if(isset($_POST["submit2"])){
+      require("mysql.php");
+      $stmt = $mysql->prepare("SELECT * FROM accounts WHERE USERNAME = :user"); //Username überprüfen
+      $stmt->bindParam(":user", $_POST["username"]);
+      $stmt->execute();
+      $count = $stmt->rowCount();
+      if($count == 0){
+        //Username ist frei
+        if($_POST["pw1"] == $_POST["pw2"]){
+          //User anlegen
+          $stmt = $mysql->prepare("INSERT INTO accounts (USERNAME, PASSWORD) VALUES (:user, :pw1)");
+          $stmt->bindParam(":user", $_POST["username"]);
+          $hash = password_hash($_POST["pw1"], PASSWORD_BCRYPT);
+          $stmt->bindParam(":pw1", $hash);
+          $stmt->execute();
+          echo "Dein Account wurde angelegt";
+        } else {
+          echo "Die Passwörter stimmen nicht überein";
+        }
+      } else {
+        echo "Der Username ist bereits vergeben";
+      }
+    }
+     ?> <!--Registrieren-->
+
+</body>
+</html>
