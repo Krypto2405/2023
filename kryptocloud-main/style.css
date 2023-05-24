@@ -45,7 +45,6 @@
     float: left;
     display: block;
     color: rgb(0, 0, 0);
-    text-align: center;
     padding: 14px 20px;
     text-decoration: none;
     background-color: #ff5500; 
@@ -54,18 +53,17 @@
     float: left;
     display: block;
     color: rgb(0, 0, 0);
-    text-align: center;
     padding: 14px 20px;
     text-decoration: none;
     background-color: whitesmoke; 
   }
   .navbar .a3 {/** Instagram */
-    float: left;
+    float: center;
     display: block;
     color: rgb(0, 0, 0);
-    text-align: center;
     padding: 14px 20px;
     text-decoration: none;
+    position: sticky;
     background-color: #b833ff; 
   }
   
