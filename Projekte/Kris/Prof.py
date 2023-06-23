@@ -24,6 +24,13 @@ Es gilt folgendes:
 Hinweis: Wie kann man auf halbe Noten runden? Die Funktion round() rundet auf ganze Noten, z.B. round(5.4) = 5 aber round(5.4*2) = 11… ;)
 """
 
+p = input("Prüfungsnote [von 1 bis 6 mit Halbpunkten]:")
+a = input("Augenfarbe [dunkel=1, hell=0]:")
+f = input("Frisur [kurze Haare=1, lange Haare=0]:")
+w = input("Wetter [schön=1, nicht schön=0]:")
+
+if 
+
 
 
 
