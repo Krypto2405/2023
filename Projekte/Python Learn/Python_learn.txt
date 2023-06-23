@@ -1,38 +1,3 @@
-10. Aufgabensammlung
-
-In diesem Kapitel findest du eine Sammlung von Aufgaben. Die Aufgaben sind in vier Teilgebiete gegliedert.
-
-Zu Beginn jeder Aufgabe sind die Vorkenntnisse angegeben, d.h. welche Kapitel mal zum Lösen gelesen haben sollte. Zu jeder Aufgabe gibt es eine Musterlösung. Die Musterlösungen sind die *.py-files und können heruntergeladen werden. Die Kommentare am Anfang der Dateien können ignoriert werden.
-
-Weiter gibt es jeweils noch eine Zusatzaufgabe, für welche keine Musterlösung vorhanden ist.
-10.1. Allgemein
-10.1.1. Hello World! I’m…
-
-Vorkenntnisse: Kapitel 1.
-Erstelle ein Programm, das deinen Vorname, Nachname und dein Geburtsdatum auf der Konsole ausgibt.
-
-
-Musterlösung: hello_i_am.py.
-
-Zusatzaufgabe: Erweitere dein Programm, indem es zum Beispiel auch deine Adresse oder deine Telefonnummer ausgibt.
-10.1.2. Winkelmass Umwandler
-
-Vorkenntnisse: Kapitel 1 bis 3.
-
-Schreibe ein Programm, das zu einem gegebenen Winkel im Bogenmass (Eingabe in der Konsole durch den Benutzer), den entsprechenden Winkel im Gradmass berechnet. Die Ausgabe soll mit Grad (°), Bogenminuten (') und Bogensekunden (") ausgegeben werden.
-
-Hinweise:
-
-    Die Zahl 
-
-    kann vom Modul math mit dem folgenden Befehl geladen werden: from math import pi. Der Wert ist dann in der Variable pi gespeichert.
-
-    Überlege dir, wie man die zwei Befehle input() und float() benutzen kann, um eine Flieskommazahl einzulesen.
-
-Musterlösung: bogen_nach_gradmass.py.
-
-Zusatzaufgabe: Schreibe ein Programm, welches die Umrechnung vom Gradmass ins Bogenmass übernimmt.
-10.1.3. Temperatur Umwandler
 
 Vorkenntnisse: Kapitel 1 bis 5.
 
