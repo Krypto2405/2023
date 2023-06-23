@@ -36,20 +36,19 @@ Dies kann dir sicher helfen.
     '''
 
 print("""
-(1) Umrechnung von Celsius nach Kelvin
-(2) Umrechnung von Celsius nach Fahrenheit
-(3) Umrechnung von Kelvin nach Celsius
-(4) Umrechnung von Kelvin nach Fahrenheit
-(5) Umrechnung von Fahrenheit nach Celsius
-(6) Umrechnung von Fahrenheit nach Kelvin
+(a) Umrechnung von Celsius nach Kelvin
+(b) Umrechnung von Celsius nach Fahrenheit
+(c) Umrechnung von Kelvin nach Celsius
+(d) Umrechnung von Kelvin nach Fahrenheit
+(e) Umrechnung von Fahrenheit nach Celsius
+(f) Umrechnung von Fahrenheit nach Kelvin
 """)
 
-e = input("Wählen sie zwischen 1 - 6:\n")
 
 
-1 = e + 273.15
-2 = (5/9 * (e - 32))
-3 =
-4 =
-5 =
-6 =
+r = (input("Wähle zwischen a - f"))
+x = int(input("Einheit:"))
+
+if input(r) == a:
+    print(x - 273.15)
+    
